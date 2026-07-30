@@ -16,3 +16,11 @@ def test_detects_assigned_secret():
 
 def test_clean_text_has_no_hits():
     assert list(secretscan.scan_text("def add(a, b):\n    return a + b\n")) == []
+
+
+def test_entropy_separates_random_from_english():
+    assert secretscan.entropy("aaaaaaaa") < secretscan.entropy("f8Kq2Zx9Wp1L")
+
+def test_redact_keeps_the_ends():
+    out = secretscan.redact("ABCDEFGHIJKL")
+    assert out.startswith("ABCD") and out.endswith("IJKL") and "*" in out
