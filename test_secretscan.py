@@ -24,3 +24,8 @@ def test_entropy_separates_random_from_english():
 def test_redact_keeps_the_ends():
     out = secretscan.redact("ABCDEFGHIJKL")
     assert out.startswith("ABCD") and out.endswith("IJKL") and "*" in out
+
+
+def test_line_numbers_are_reported():
+    hits = list(secretscan.scan_text("ok\nok\nAKIAIOSFODNN7EXAMPLE"))
+    assert hits[0][1] == 3
