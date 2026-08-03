@@ -7,3 +7,13 @@
 The cheapest moment to catch a committed API key is before the push. This is a
 single stdlib-only file you can wire into a pre-commit hook on any machine,
 with no service to sign up for.
+
+## Usage
+
+```
+python secretscan.py .
+python secretscan.py src --min-entropy 3.2    # fewer false positives
+python secretscan.py . --show                 # do not redact matches
+```
+
+Exit code is 1 when anything is found, so it fails a build or a hook.
