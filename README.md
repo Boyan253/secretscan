@@ -17,3 +17,14 @@ python secretscan.py . --show                 # do not redact matches
 ```
 
 Exit code is 1 when anything is found, so it fails a build or a hook.
+
+## What it looks for
+
+- AWS access key IDs (`AKIA…`, `ASIA…`)
+- GitHub tokens (`ghp_`, `gho_`, `ghu_`, `ghs_`, `ghr_`)
+- Slack tokens (`xoxb-`, `xoxp-`, …)
+- Google API keys (`AIza…`)
+- Stripe live and test keys
+- PEM private key blocks
+- JWTs
+- Assignments like `api_key = "…"` with a long enough value
