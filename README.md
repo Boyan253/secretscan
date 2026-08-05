@@ -28,3 +28,15 @@ Exit code is 1 when anything is found, so it fails a build or a hook.
 - PEM private key blocks
 - JWTs
 - Assignments like `api_key = "…"` with a long enough value
+
+## Pre-commit hook
+
+`.git/hooks/pre-commit`:
+
+```sh
+#!/bin/sh
+python /path/to/secretscan.py . || {
+  echo "secretscan found something -- commit aborted"
+  exit 1
+}
+```
