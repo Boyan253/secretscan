@@ -40,3 +40,12 @@ python /path/to/secretscan.py . || {
   exit 1
 }
 ```
+
+## Limits
+
+This is a pattern matcher, not a guarantee. It will miss custom credential
+formats and it will occasionally flag a long random-looking string that is
+harmless. `--min-entropy` trades recall for precision.
+
+Skips `.git`, `node_modules`, virtualenvs, build output, binaries, and files
+over 2 MB.
