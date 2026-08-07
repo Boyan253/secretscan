@@ -49,3 +49,10 @@ harmless. `--min-entropy` trades recall for precision.
 
 Skips `.git`, `node_modules`, virtualenvs, build output, binaries, and files
 over 2 MB.
+
+## Tests
+
+```
+pip install pytest
+pytest
+```
