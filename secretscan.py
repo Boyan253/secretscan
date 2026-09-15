@@ -7,6 +7,8 @@ import os
 import re
 import sys
 
+__version__ = "0.1.0"
+
 RULES = [
     ("AWS access key", re.compile(r"\b(AKIA|ASIA)[0-9A-Z]{16}\b")),
     ("GitHub token", re.compile(r"\bgh[pousr]_[A-Za-z0-9]{36,}\b")),
@@ -74,6 +76,8 @@ def walk_files(root):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--version", action="version",
+                    version="%(prog)s " + __version__)
     ap.add_argument("path", nargs="?", default=".")
     ap.add_argument("--min-entropy", type=float, default=0.0,
                     help="drop matches below this bits-per-char score")
